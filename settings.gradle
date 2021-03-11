@@ -1,0 +1,4 @@
+include ':lintLib'
+include ':lintRule'
+include ':app'
+rootProject.name = "LintPlugin"

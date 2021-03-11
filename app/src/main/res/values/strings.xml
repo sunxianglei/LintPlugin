@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LintPlugin</string>
+    <string name="hello">你好</string>
+</resources>

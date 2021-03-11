@@ -1,0 +1,43 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'com.android.lint'
+}
+
+lintOptions {
+    abortOnError false
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+/**
+ * Lint-Registry是透露给lint工具的注册类的方法，
+ * 也就是PermissionIssueRegistry是lint工具的入口,同时也通过这个方法进行打jar包
+ */
+//jar{
+//    manifest{
+//        attributes('Lint-Registry': 'com.sun.lintrule.LintIssueRegister')
+//    }
+//}
+
+// 创建了一个叫“lintJarOutput”的Gradle configuration，
+// 用于输出我们生成的jar包。在生成aar的模块 "XTCLintAAR" 的build.gradle中会引用此configuration。
+//configurations {
+//    lintJarOutput
+//}
+
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "com.android.tools.lint:lint-api:$lintVersion"
+    compileOnly "com.android.tools.lint:lint-checks:$lintVersion"
+    compileOnly "com.android.tools.lint:lint-api:$lintVersion"
+    compileOnly "com.android.tools.layoutlib:layoutlib-api:$lintVersion"
+    compileOnly "com.android.tools:common:$lintVersion"
+    compileOnly "com.android.tools.external.com-intellij:kotlin-compiler:$lintVersion"
+    compileOnly "org.ow2.asm:asm:7.0"
+    // 指定定义方法lintJarOutput的作用，此处是获得调用jar方法后的生成的jar包
+//    lintJarOutput files(jar)
+}
